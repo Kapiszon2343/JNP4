@@ -24,8 +24,8 @@ namespace
 	}
 }
 
-template <typename ValueType, bool IsArmed>
-requires integer<ValueType>
+template <integer ValueType, bool IsArmed>
+// requires integer<ValueType>
 class Adventurer
 {
 private:
@@ -56,7 +56,7 @@ public:
 	}
 };
 
-template <typename ValueType>
+template <integer ValueType>
 class Adventurer<ValueType, true>
 {
 private:
@@ -100,11 +100,11 @@ public:
 	}
 };
 
-template <typename ValueType>
+template <integer ValueType>
 using Explorer = Adventurer<ValueType, false>;
 
-template <typename ValueType, size_t completedExpeditions>
-requires integer<ValueType> && small<completedExpeditions>
+template <integer ValueType, size_t completedExpeditions>
+requires small<completedExpeditions>
 class Veteran
 {
 private:
