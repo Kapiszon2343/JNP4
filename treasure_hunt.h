@@ -81,9 +81,14 @@ constexpr void run(Encounter<A, B> encounter)
 //expedition()
 
 template <typename Encounter>
-constexpr void expedition(std::initializer_list<Encounter> list) {
-    for(auto elem : list)
-        run(elem);
+constexpr void expedition(Encounter t) {
+    run(t);
+}
+
+template <typename Encounter, typename... Args>
+constexpr void expedition(Encounter t, Args ... args) {
+    run(t);
+    expedition(args...);
 }
 
 #endif //UNTITLED67_TREASURE_HUNT_H
