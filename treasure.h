@@ -8,7 +8,7 @@ using std::is_integral;
 template <typename T>
 concept integer = is_integral<T>::value;
 
-template <typename ValueType, bool IsTrapped>
+template <integer ValueType, bool IsTrapped>
 class Treasure
 {
 private:
@@ -31,10 +31,10 @@ public:
   }
 };
 
-template <typename ValueType>
+template <integer ValueType>
 using SafeTreasure = Treasure<ValueType, false>;
 
-template <typename ValueType>
+template <integer ValueType>
 using TrappedTreasure = Treasure<ValueType, true>;
 
 #endif // __TREASURE_H__
