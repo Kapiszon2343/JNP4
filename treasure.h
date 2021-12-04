@@ -9,7 +9,7 @@ template <typename T>
 concept integer = is_integral<T>::value;
 
 template <typename ValueType, bool IsTrapped>
-struct Treasure
+class Treasure
 {
 private:
   ValueType value;
