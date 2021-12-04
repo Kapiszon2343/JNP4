@@ -35,14 +35,13 @@ public:
 	constexpr Adventurer()
 			: treasure(0) {}
 
-	constexpr bool isArmed() const
-	{
-		return false;
-	}
-
 	constexpr void loot(Treasure<ValueType, false> &&lootingTreasure)
 	{
 		treasure += lootingTreasure.getLoot();
+	}
+
+	constexpr void loot(Treasure<ValueType, true> &&lootingTreasure)
+	{
 	}
 
 	constexpr ValueType pay()
@@ -68,11 +67,6 @@ public:
 
 	constexpr Adventurer(strength_t str)
 			: treasure(0), strength(str) {}
-
-	constexpr bool isArmed() const
-	{
-		return true;
-	}
 
 	constexpr strength_t getStrength() const
 	{
@@ -118,11 +112,6 @@ private:
 public:
 	constexpr Veteran()
 			: treasure(0), strength(fibonacci<completedExpeditions>()) {}
-
-	constexpr bool isArmed() const
-	{
-		return true;
-	}
 
 	constexpr strength_t getStrength() const
 	{
