@@ -10,8 +10,8 @@ using std::same_as;
 template <typename T>
 concept EncounterSide = requires(T t)
                         {
-                            same_as<T, Treasure<decltype(t.evaluate()), false>> ||
-                            same_as<T, Treasure<decltype(t.evaluate()), true>>;
+                            same_as<T, Treasure<int, false> > ||
+                            same_as<T, Treasure<int, true> >;
                         }
                         ||
                         requires(T t)
@@ -19,8 +19,8 @@ concept EncounterSide = requires(T t)
                             typename T::strength_t;
                             same_as<bool, decltype(t.isArmed)>;
                             integer<decltype(t.pay())>;
-                            t.loot((Treasure<decltype(t.pay()), true>){t.pay(), true}) ||
-                            t.loot((Treasure<decltype(t.pay()), false>){t.pay(), false});
+                            t.loot((Treasure<int, true>){t.pay(), true}) ||
+                            t.loot((Treasure<int, false>){t.pay(), false})   ;
                         };
 
 
