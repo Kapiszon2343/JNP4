@@ -6,12 +6,17 @@
 
 using std::same_as;
 
+template <typename T>
+concept isTreasure = requires
+{
+  same_as<T, Treasure<int, false>> ||
+      same_as<T, Treasure<int, true>>;
+};
 
 template <typename T>
 concept EncounterSide = requires(T t)
                         {
-                            same_as<T, Treasure<int, false> > ||
-                            same_as<T, Treasure<int, true> >;
+                            isTreasure<T>;
                         }
                         ||
                         requires(T t)
