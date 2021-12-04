@@ -80,10 +80,10 @@ constexpr void run(Encounter<A, B> encounter)
 
 //expedition()
 
-template <typename Encounter, typename... Args>
-constexpr void expedition(Encounter t, Args ... args) {
-    run(t);
-    expedition(args...);
+template <typename Encounter>
+constexpr void expedition(std::initializer_list<Encounter> list) {
+    for(auto elem : list)
+        run(elem);
 }
 
 #endif //UNTITLED67_TREASURE_HUNT_H
