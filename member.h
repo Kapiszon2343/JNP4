@@ -40,12 +40,9 @@ public:
 		return false;
 	}
 
-	constexpr void loot(ValueType &&lootingTreasure)
+	constexpr void loot(Treasure<ValueType, false> &&lootingTreasure)
 	{
-		if constexpr (!lootingTreasure.IsTrapped)
-		{
-			treasure += lootingTreasure.loot();
-		}
+		treasure += lootingTreasure.getLoot();
 	}
 
 	constexpr ValueType pay()
@@ -82,15 +79,16 @@ public:
 		return strength;
 	}
 
-	constexpr void loot(ValueType &&lootingTreasure)
+	constexpr void loot(Treasure<ValueType, false> &&lootingTreasure)
 	{
-		if constexpr (!lootingTreasure.IsTrapped)
+		treasure += lootingTreasure.getLoot();
+	}
+
+	constexpr void loot(Treasure<ValueType, true> &&lootingTreasure)
+	{
+		if constexpr (strength > 0)
 		{
-			treasure += lootingTreasure.loot();
-		}
-		else if constexpr (strength > 0)
-		{
-			treasure += lootingTreasure.loot();
+			treasure += lootingTreasure.getLoot();
 			strength /= 2;
 		}
 	}
@@ -131,15 +129,16 @@ public:
 		return strength;
 	}
 
-	constexpr void loot(ValueType &&lootingTreasure)
+	constexpr void loot(Treasure<ValueType, false> &&lootingTreasure)
 	{
-		if constexpr (!lootingTreasure.IsTrapped)
+		treasure += lootingTreasure.getLoot();
+	}
+
+	constexpr void loot(Treasure<ValueType, true> &&lootingTreasure)
+	{
+		if constexpr (strength > 0)
 		{
-			treasure += lootingTreasure.loot();
-		}
-		else if constexpr (strength > 0)
-		{
-			treasure += lootingTreasure.loot();
+			treasure += lootingTreasure.getLoot();
 			strength /= 2;
 		}
 	}
