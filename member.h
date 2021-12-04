@@ -48,7 +48,7 @@ public:
 		}
 	}
 
-	constexpr ValueType pay() const
+	constexpr ValueType pay()
 	{
 		ValueType tmp = treasure;
 		treasure = 0;
@@ -95,7 +95,7 @@ public:
 		}
 	}
 
-	constexpr ValueType pay() const
+	constexpr ValueType pay()
 	{
 		ValueType tmp = treasure;
 		treasure = 0;
@@ -144,7 +144,7 @@ public:
 		}
 	}
 
-	constexpr ValueType pay() const
+	constexpr ValueType pay()
 	{
 		ValueType tmp = treasure;
 		treasure = 0;
