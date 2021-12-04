@@ -26,7 +26,7 @@ namespace
 
 template <typename ValueType, bool IsArmed>
 requires integer<ValueType>
-struct Adventurer
+class Adventurer
 {
 private:
 	ValueType treasure;
@@ -57,7 +57,7 @@ public:
 };
 
 template <typename ValueType>
-struct Adventurer<ValueType, true>
+class Adventurer<ValueType, true>
 {
 private:
 	ValueType treasure;
@@ -105,7 +105,7 @@ using Explorer = Adventurer<ValueType, false>;
 
 template <typename ValueType, size_t completedExpeditions>
 requires integer<ValueType> && small<completedExpeditions>
-struct Veteran
+class Veteran
 {
 private:
 	ValueType treasure;
