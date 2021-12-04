@@ -3,8 +3,6 @@
 
 #include "treasure.h"
 
-using strength_t = int32_t;
-
 template <size_t n>
 concept small = n < 25;
 
@@ -32,6 +30,8 @@ private:
 	ValueType treasure;
 
 public:
+	using strength_t = int32_t;
+
 	constexpr Adventurer()
 			: treasure(0) {}
 
@@ -59,6 +59,9 @@ public:
 template <integer ValueType>
 class Adventurer<ValueType, true>
 {
+public:
+	using strength_t = int32_t;
+
 private:
 	ValueType treasure;
 	strength_t strength;
@@ -107,6 +110,9 @@ template <integer ValueType, size_t completedExpeditions>
 requires small<completedExpeditions>
 class Veteran
 {
+public:
+	using strength_t = int32_t;
+
 private:
 	ValueType treasure;
 	strength_t strength;
